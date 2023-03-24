@@ -1,8 +1,7 @@
 clear all
 close all
 
-pb = 3;
-
+pb = 3
 
 if pb ==1
 % Problem 1
@@ -11,15 +10,17 @@ Re       = 6370;
 mu = 398600;
 
 rp = 600 + Re;
-T0 = 24*3600*3;
+T0 = 24*3600/3;
 a = (mu*(T0/(2*pi))^2)^(1/3);
 
 Reasq = (Re/a)^2;
 
 n = sqrt(mu/a^3);
 e = 1-(rp/a);
-i = acos(sqrt((3*n*J2_Earth*Reasq))/(20*((1-e^2)^2)));
-om_dot = -3/2 * n * J2_Earth * Reasq* cos(i)/((1-e^2)^2);
+i = acos(sqrt(1/5))
+i_degree = i*180/pi
+
+om_dot = -3/2 * n * J2_Earth * Reasq* cos(i)/((1-e^2)^2)
 
 
 
@@ -38,8 +39,9 @@ Reasq = (Re/a)^2;
 
 n = sqrt(mu/a^3);
 e = 1-(rp/a);
-i = acos(sqrt((3*n*J2_Mars*Reasq))/(20*((1-e^2)^2)));
-om_dot = -3/2 * n * J2_Mars * Reasq* cos(i)/((1-e^2)^2);
+i = acos(sqrt(1/5))
+i_degree = i*180/pi
+om_dot = -3/2 * n * J2_Mars * Reasq* cos(i)/((1-e^2)^2)
 
 % Problem 3
 elseif pb==3
@@ -51,7 +53,7 @@ tspan = linspace(0,100*86400,10000);
 opts = odeset('RelTol',1e-11,'AbsTol',1e-13);
 
 %km          deg                nondim    deg       deg     deg
-a = 26000; i = 1.10654*180/pi; e = 0.74; w = 5; RAAN = 90; M = 10;
+a = 26600; i = 1.10654*180/pi; e = 0.74; w = 5; RAAN = 90; M = 10;
 
 f = keplerOE(e,a,M,0,mu,false,1e-15);
 
